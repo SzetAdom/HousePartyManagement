@@ -1,0 +1,28 @@
+﻿@model List<Snack>
+
+@{
+    ViewData["Title"] = "Snack";
+}
+
+<div>
+    <h1 class="display-4">Snackkek</h1>
+</div>
+
+<div style="position : center">
+    <input type="text">
+    <button type="submit">Search</button>
+</div>
+
+<div>
+    <p></p>
+</div>
+
+<div>
+    @foreach (Snack snack in Model)
+    {
+        <p>
+            @snack.Brand @snack.Name
+        @snack.PriceString()
+    </p>
+}
+</div>

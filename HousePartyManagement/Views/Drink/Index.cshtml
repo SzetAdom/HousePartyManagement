@@ -1,0 +1,31 @@
+﻿@model List<Drink>;
+
+@{
+    ViewData["Title"] = "Ital";
+}
+
+<div>
+    <h1 class="display-4">Italok</h1>
+</div>
+
+@*<div style="position : center">
+    <input type="text">
+    <button type="submit">Search</button>
+</div>*@
+
+<div>
+    <p></p>
+</div>
+
+<div>
+    @foreach (Drink drink in Model)
+    {
+    <p>
+        @drink.Brand @drink.Name
+        @if (drink.AlcoholPercentage != 0)
+        {@drink.AlcoholString()
+        } @drink.BottleString() - 
+        @drink.PriceString()
+    </p>
+    }
+</div>

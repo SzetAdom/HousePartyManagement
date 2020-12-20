@@ -1,0 +1,74 @@
+﻿@model List<Party>;
+
+@{
+    ViewData["Title"] = "Party";
+}
+
+<div>
+    <h1 class="display-4">Partik</h1>
+</div>
+
+@*<div style="position : center">
+        <input type="text"></input>
+        <button type="submit">Search</button>
+    </div>*@
+
+<div>
+    <hr>
+</div>
+
+<div>
+    @foreach (Party party in Model)
+    {
+        <p>Szervező: @party.Host</p>
+        <p>Helyszín: @party.Location</p>
+        <p>Dátum: @party.Time.ToString("yyyy-MM-dd HH:mm")</p>
+
+        <table>
+            <tr>
+                <th>Tagok:</th>
+            </tr>
+            @foreach (string member in party.Members)
+            {
+                <tr>
+                    <td>@member</td>
+                </tr>
+            }
+        </table>
+
+        <p>Kapacitás: @party.Members.Count / @party.Capacity</p>
+        @if (party.Snacks.Count != 0)
+        {
+            <table>
+                <tr>
+                    <th>Snack</th>
+                    <th>Fogyott mennyiség</th>
+                </tr>
+                @foreach (Snack snack in party.Snacks)
+                {
+                    <tr>
+                        <td>@snack</td>
+                        <td>@party.ConsumedSnacks.First(s => s.Key == snack.Id).Value</td>
+                    </tr>
+                }
+            </table>
+        }
+
+        <table>
+            <tr>
+                <th>Ital</th>
+                <th>Fogyott mennyiség</th>
+            </tr>
+            @foreach (Drink drink in party.Drinks)
+            {
+                <tr>
+                    <td>@drink.Name</td>
+                    <td style="text-align:right">@party.ConsumedDrinks.First(s => s.Key == drink.Id).Value</td>
+                </tr>
+            }
+        </table>
+
+        <p>Ár: @party.Price Ft</p>
+        <a asp-action="Edit" asp-route-id="@party.Id">Szerkeszt</a>
+    }
+</div>

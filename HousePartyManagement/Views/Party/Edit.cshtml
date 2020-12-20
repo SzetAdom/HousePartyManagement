@@ -1,0 +1,18 @@
+﻿@model Party
+
+<form asp-action="@(Model.Id == -1 ? "New":"Edit")">
+    <input class="form-control" type="text" asp-for="Id" value="@Model.Id" hidden/>
+    <div class="form-group">
+        <label>Szervező</label>
+        <input class="form-control" type="text" asp-for="Host" value="@Model.Host">
+    </div>
+    <div class="form-group">
+        <label>Helyszín</label>
+        <input class="form-control" type="text" asp-for="Location" value="@Model.Location">
+    </div>
+    <div class="form-group">
+        <label>Dátum</label>
+        <input class="form-control" type="datetime" asp-for="Time" value="@Model.Time">
+    </div>
+    <input class="btn-primary" type="submit" value="Mentés" />
+</form> 
