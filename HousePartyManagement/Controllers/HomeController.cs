@@ -10,6 +10,10 @@ namespace HousePartyManagement.Controllers
     {
         public IActionResult Index()
         {
+            if (this.User.Identity.IsAuthenticated)
+            {
+                return Redirect("~/Party");
+            }
             return View();
         }
 

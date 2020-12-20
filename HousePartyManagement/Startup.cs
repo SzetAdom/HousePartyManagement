@@ -59,7 +59,7 @@ namespace HousePartyManagement
                 endpoints.MapControllerRoute(
                     name: "default",
                     //pattern: "../Areas/Identity/Account/Register");
-                    pattern: "{controller=Party}/{action=Index}");
+                    pattern: "{controller=Home}/{action=Index}");
                 endpoints.MapRazorPages();
             });
             app.UseBrowserLink();
