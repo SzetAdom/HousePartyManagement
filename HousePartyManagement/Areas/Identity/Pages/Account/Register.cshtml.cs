@@ -69,7 +69,7 @@ namespace HousePartyManagement.Areas.Identity.Pages.Account
             public string Email { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "A jelszónak legalább {2} és maximum {1} kell tartalmaznia.", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "A jelszónak legalább {2} és maximum {1} karaktert kell tartalmaznia.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Jelszó")]
             public string Password { get; set; }

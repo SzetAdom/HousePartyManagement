@@ -10036,11 +10036,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\adams\\Desktop\\PROGMODGYAK\\second\\HousePartyManagement\\HousePartyManagement\\HousePartyManagement.csproj",
+      "projectUniqueName": "C:\\Users\\adams\\Documents\\GitHub\\HousePartyManagement\\HousePartyManagement\\HousePartyManagement.csproj",
       "projectName": "HousePartyManagement",
-      "projectPath": "C:\\Users\\adams\\Desktop\\PROGMODGYAK\\second\\HousePartyManagement\\HousePartyManagement\\HousePartyManagement.csproj",
+      "projectPath": "C:\\Users\\adams\\Documents\\GitHub\\HousePartyManagement\\HousePartyManagement\\HousePartyManagement.csproj",
       "packagesPath": "C:\\Users\\adams\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\adams\\Desktop\\PROGMODGYAK\\second\\HousePartyManagement\\HousePartyManagement\\obj\\",
+      "outputPath": "C:\\Users\\adams\\Documents\\GitHub\\HousePartyManagement\\HousePartyManagement\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
