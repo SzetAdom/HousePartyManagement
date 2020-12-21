@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HousePartyManagement.Migrations
 {
-    [DbContext(typeof(HousePartyManagementContext))]
+    [DbContext(typeof(UserDBContext))]
     partial class HousePartyManagementContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

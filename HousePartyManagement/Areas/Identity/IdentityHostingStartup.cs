@@ -16,12 +16,12 @@ namespace HousePartyManagement.Areas.Identity
         public void Configure(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context, services) => {
-                services.AddDbContext<HousePartyManagementContext>(options =>
+                services.AddDbContext<UserDBContext>(options =>
                     options.UseMySQL(
                         context.Configuration.GetConnectionString("DefaultConnection")));
 
                 services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
-                    .AddEntityFrameworkStores<HousePartyManagementContext>();
+                    .AddEntityFrameworkStores<UserDBContext>();
             });
         }
     }

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HousePartyManagement.Migrations
 {
-    [DbContext(typeof(HousePartyManagementContext))]
+    [DbContext(typeof(UserDBContext))]
     [Migration("20201219194136_Initial-Create")]
     partial class InitialCreate
     {

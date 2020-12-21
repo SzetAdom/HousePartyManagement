@@ -9,9 +9,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HousePartyManagement.Data
 {
-    public class HousePartyManagementContext : IdentityDbContext<User>
+    public class UserDBContext : IdentityDbContext<User>
     {
-        public HousePartyManagementContext(DbContextOptions<HousePartyManagementContext> options)
+        public UserDBContext(DbContextOptions<UserDBContext> options)
             : base(options)
         {
         }

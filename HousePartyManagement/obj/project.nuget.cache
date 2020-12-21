@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HAp/KFX7qdUBen69S9+gXQnuMadXC0q1a0r6F7RFxhzi2gKcFFi+pzMantzZPWmpYMHiUF5wwJkhwnoytgl5ZQ==",
+  "dgSpecHash": "iO8djHp62lZDONbh8JMPo+yXil0Q8y3XaWOOtI5L2ZMfRPKhbkenYkbUOFpcR/tBaC9NuvLDeVBXk0i0Q7jnlQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\adams\\Desktop\\PROGMODGYAK\\second\\HousePartyManagement\\HousePartyManagement\\HousePartyManagement.csproj",
+  "projectFilePath": "C:\\Users\\adams\\Documents\\GitHub\\HousePartyManagement\\HousePartyManagement\\HousePartyManagement.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\adams\\.nuget\\packages\\bouncycastle.netcore\\1.8.3\\bouncycastle.netcore.1.8.3.nupkg.sha512",
     "C:\\Users\\adams\\.nuget\\packages\\google.protobuf\\3.11.4\\google.protobuf.3.11.4.nupkg.sha512",
