@@ -1,0 +1,54 @@
+@model Party
+
+@{
+    ViewData["Title"] = "Részletek";
+}
+<h1>Adatok:</h1>
+<p>Szervező: @Model.Host</p>
+<p>Helyszin: @Model.Location</p>
+<p>Dátum: @Model.Time.ToString("yyyy-MM-dd HH:mm")</p>
+<p>Jelentkezők: </p>
+@foreach (string member in Model.Members)
+{
+    <table>
+        <tr>
+            <td>@member</td>
+        </tr>
+    </table>
+}
+<p>Kapacitás: @Model.Members.Count / @Model.Capacity</p>
+
+
+<h1>Kívánságlista:</h1>
+@if (Model.Drinks.Count != 0)
+{<table>
+        <tr>
+            <th>Ital</th>
+        </tr>
+        @foreach (Drink drink in Model.Drinks)
+        {
+            <tr>
+                <td>@drink.Name</td>
+                <td><input type="checkbox"></td>
+                <td><input class="form-control" type="number"></td>
+            </tr>
+        }
+    </table>}
+
+@if (Model.Snacks.Count != 0)
+{   <table>
+        <tr>
+            <th>Snacks</th>
+        </tr>
+        @foreach (Snack snack in Model.Snacks)
+        {
+            <tr>
+                <td>@snack.Name</td>
+                <td><input type="checkbox"></td>
+                <td><input class="form-control" type="number"></td>
+            </tr>
+        }
+    </table>}
+
+<input class="btn-primary" type="submit" value="Jelentkezés">
+

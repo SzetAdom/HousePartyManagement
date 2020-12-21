@@ -1,4 +1,5 @@
-﻿using HousePartyManagement.Models;
+﻿using HousePartyManagement.Data;
+using HousePartyManagement.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -13,46 +14,31 @@ namespace HousePartyManagement.Controllers
     [Authorize]
     public class SnackController : Controller
     {
-        private readonly ILogger<SnackController> _logger;
-
-        public SnackController(ILogger<SnackController> logger)
+        private HousePartyContext context;
+        public SnackController()
         {
-            _logger = logger;
         }
 
         public IActionResult Index()
         {
-            return View(GetSnacks());
+            HousePartyContext context = HttpContext.RequestServices.GetService(typeof(HousePartyContext)) as HousePartyContext;
+
+            return View(context.GetSnacks());
         }
 
-        private List<Snack> GetSnacks()
+        [HttpPost]
+        public ActionResult CreateSnack(Snack model)
         {
 
+            context = HttpContext.RequestServices.GetService(typeof(HousePartyContext)) as HousePartyContext;
 
-            List<Snack> SnackList = new List<Snack>();
+            context.CreateSnack(model);
 
-            Snack snack = new Snack();
-
-            Random rnd = new Random();
-
-            snack.Name = "Csokis Keksz";
-            snack.Brand = "Pilóta";
-            snack.Price = rnd.Next(100, 30000);
-            SnackList.Add(snack);
-
-            return SnackList;
+            return RedirectToAction("Index");
         }
-
-        //[HttpPost]
-        //public ActionResult Search(List<Drink> model)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View("Index");
-        //    }
-
-        //    return View("Index", model.Where(drink => drink.Name == model[model.Count-1].Name));
-        //}
-
+        public ActionResult ShowCreateSnack(Snack model)
+        {
+            return View("CreateSnack", model);
+        }
     }
 }

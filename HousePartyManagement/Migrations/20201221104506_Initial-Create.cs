@@ -23,16 +23,16 @@ namespace HousePartyManagement.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "User",
+                name: "szemely",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
-                    UserName = table.Column<string>(maxLength: 256, nullable: true),
+                    idSzemely = table.Column<string>(nullable: false),
+                    Felhasznalonev = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
                     Email = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
                     EmailConfirmed = table.Column<bool>(nullable: false),
-                    PasswordHash = table.Column<string>(nullable: true),
+                    Jelszo = table.Column<string>(nullable: true),
                     SecurityStamp = table.Column<string>(nullable: true),
                     ConcurrencyStamp = table.Column<string>(nullable: true),
                     PhoneNumber = table.Column<string>(nullable: true),
@@ -40,11 +40,14 @@ namespace HousePartyManagement.Migrations
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false)
+                    AccessFailedCount = table.Column<int>(nullable: false),
+                    Nev = table.Column<string>(type: "varchar(45)", nullable: true),
+                    Nem = table.Column<string>(type: "varchar(20)", nullable: true),
+                    SzuletesiIdo = table.Column<DateTime>(type: "date", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_User", x => x.Id);
+                    table.PrimaryKey("PK_szemely", x => x.idSzemely);
                 });
 
             migrationBuilder.CreateTable(
@@ -82,10 +85,10 @@ namespace HousePartyManagement.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUserClaims", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AspNetUserClaims_User_UserId",
+                        name: "FK_AspNetUserClaims_szemely_UserId",
                         column: x => x.UserId,
-                        principalTable: "User",
-                        principalColumn: "Id",
+                        principalTable: "szemely",
+                        principalColumn: "idSzemely",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -102,10 +105,10 @@ namespace HousePartyManagement.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUserLogins", x => new { x.LoginProvider, x.ProviderKey });
                     table.ForeignKey(
-                        name: "FK_AspNetUserLogins_User_UserId",
+                        name: "FK_AspNetUserLogins_szemely_UserId",
                         column: x => x.UserId,
-                        principalTable: "User",
-                        principalColumn: "Id",
+                        principalTable: "szemely",
+                        principalColumn: "idSzemely",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -126,10 +129,10 @@ namespace HousePartyManagement.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_AspNetUserRoles_User_UserId",
+                        name: "FK_AspNetUserRoles_szemely_UserId",
                         column: x => x.UserId,
-                        principalTable: "User",
-                        principalColumn: "Id",
+                        principalTable: "szemely",
+                        principalColumn: "idSzemely",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -146,10 +149,10 @@ namespace HousePartyManagement.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
                     table.ForeignKey(
-                        name: "FK_AspNetUserTokens_User_UserId",
+                        name: "FK_AspNetUserTokens_szemely_UserId",
                         column: x => x.UserId,
-                        principalTable: "User",
-                        principalColumn: "Id",
+                        principalTable: "szemely",
+                        principalColumn: "idSzemely",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -181,12 +184,12 @@ namespace HousePartyManagement.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "EmailIndex",
-                table: "User",
+                table: "szemely",
                 column: "NormalizedEmail");
 
             migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
-                table: "User",
+                table: "szemely",
                 column: "NormalizedUserName",
                 unique: true);
         }
@@ -212,7 +215,7 @@ namespace HousePartyManagement.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "szemely");
         }
     }
 }

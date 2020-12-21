@@ -1,5 +1,6 @@
 ﻿using HousePartyManagement.Data;
 using HousePartyManagement.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -10,14 +11,12 @@ using System.Threading.Tasks;
 
 namespace HousePartyManagement.Controllers
 {
+    [Authorize]
     public class DrinkController : Controller
     {
-        private readonly ILogger<DrinkController> _logger;
-        //private HousePartyContext _context;
-
-        public DrinkController(ILogger<DrinkController> logger)
+        private HousePartyContext context;
+        public DrinkController()
         {
-            _logger = logger;
             
         }
 
@@ -28,51 +27,18 @@ namespace HousePartyManagement.Controllers
             return View(context.GetAllDrink());
         }
 
-        private List<Drink> GetDrinks() {
+        [HttpPost]
+        public ActionResult CreateDrink(Drink model)
+        {
+            context = HttpContext.RequestServices.GetService(typeof(HousePartyContext)) as HousePartyContext;
 
+            context.CreateDrink(model);
 
-            List<Drink> DrinkList = new List<Drink>();
-
-            Drink drink = new Drink();
-
-            Random rnd = new Random();
-            
-            drink.Name = "Vodka";
-            drink.Brand = "Royal";
-            drink.Bottle = 1.0;
-            drink.Price = rnd.Next(100,30000);
-            drink.AlcoholPercentage = 0.35;
-            DrinkList.Add(drink);
-
-            drink = new Drink();
-            drink.Name = "Tequila";
-            drink.Brand = "Sierra";
-            drink.Bottle = 0.7;
-            drink.Price = rnd.Next(100, 30000);
-            drink.AlcoholPercentage = 0.37;
-            DrinkList.Add(drink);
-
-            drink = new Drink();
-            drink.Name = "Jägermeister";
-            drink.Brand = "";
-            drink.Bottle = 0.5;
-            drink.Price = rnd.Next(100, 30000);
-            drink.AlcoholPercentage = 0.36;
-            DrinkList.Add(drink);
-
-            return DrinkList;
+            return RedirectToAction("Index");
         }
-
-        //[HttpPost]
-        //public ActionResult Search(List<Drink> model)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View("Index");
-        //    }
-
-        //    return View("Index", model.Where(drink => drink.Name == model[model.Count-1].Name));
-        //}
-
+        public ActionResult ShowCreateDrink(Drink model)
+        {
+            return View("CreateDrink", model);
+        }
     }
 }

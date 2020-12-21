@@ -11,7 +11,7 @@ namespace HousePartyManagement.Models
         public string Name { get; set; }
         public string Brand { get; set; }
         public double Bottle { get; set; }
-        public double AlcoholPercentage { get; set; }
+        public string AlcoholPercentage { get; set; }
         public int Price { get; set; }
         public string Comment { get; set; }
         public bool IsActive { get; set; }
@@ -28,7 +28,7 @@ namespace HousePartyManagement.Models
 
         public string PriceString()
         {
-            return this.Price.ToString() + " Ft;";
+            return this.Price.ToString() + " Ft";
         }
     }
 }

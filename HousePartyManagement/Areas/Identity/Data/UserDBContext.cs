@@ -22,11 +22,16 @@ namespace HousePartyManagement.Data
 
             builder.Entity<User>(entity =>
             {
+                entity.Property(e => e.Id).HasColumnName("idSzemely");
+                entity.Property(e => e.UserName).HasColumnName("Felhasznalonev");
+                entity.Property(e => e.Name).HasColumnName("Nev");
+                entity.Property(e => e.Gender).HasColumnName("Nem");
+                entity.Property(e => e.BirthDate).HasColumnName("SzuletesiIdo");
+                entity.Property(e => e.PasswordHash).HasColumnName("Jelszo");
+                entity.Property(e => e.Email).HasColumnName("Email");
 
-                entity.Property(e => e.Name).HasColumnName("Name");
-                entity.Property(e => e.Gender).HasColumnName("Gender");
-                entity.Property(e => e.BirthDate).HasColumnName("BirthDate");
-                entity.ToTable(name: "User");
+
+                entity.ToTable(name: "szemely");
                 //entity.Propert
             });
 

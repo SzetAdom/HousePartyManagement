@@ -10,10 +10,10 @@ namespace HousePartyManagement.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Brand { get; set; }
-        public int Weight { get; set; }
+        public string Weight { get; set; }
         public int Count { get; set; }
         public int Price { get; set; }
-        public bool IsActive { get; set; }
+        public int IsActive { get; set; }
 
         public string PriceString()
         {

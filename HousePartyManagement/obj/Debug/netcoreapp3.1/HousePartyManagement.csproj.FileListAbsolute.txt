@@ -1304,3 +1304,7 @@ C:\Users\adams\Documents\GitHub\HousePartyManagement\HousePartyManagement\obj\De
 C:\Users\adams\Documents\GitHub\HousePartyManagement\HousePartyManagement\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\ResetPasswordConfirmation.cshtml.g.cs
 C:\Users\adams\Documents\GitHub\HousePartyManagement\HousePartyManagement\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\_StatusMessage.cshtml.g.cs
 C:\Users\adams\Documents\GitHub\HousePartyManagement\HousePartyManagement\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
+C:\Users\adams\Documents\GitHub\HousePartyManagement\HousePartyManagement\obj\Debug\netcoreapp3.1\Razor\Views\Drink\CreateDrink.cshtml.g.cs
+C:\Users\adams\Documents\GitHub\HousePartyManagement\HousePartyManagement\obj\Debug\netcoreapp3.1\Razor\Views\Party\Create.cshtml.g.cs
+C:\Users\adams\Documents\GitHub\HousePartyManagement\HousePartyManagement\obj\Debug\netcoreapp3.1\Razor\Views\Party\More.cshtml.g.cs
+C:\Users\adams\Documents\GitHub\HousePartyManagement\HousePartyManagement\obj\Debug\netcoreapp3.1\Razor\Views\Snack\CreateSnack.cshtml.g.cs

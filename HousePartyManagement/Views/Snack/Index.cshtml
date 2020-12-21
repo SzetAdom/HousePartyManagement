@@ -8,21 +8,31 @@
     <h1 class="display-4">Snackkek</h1>
 </div>
 
-<div style="position : center">
+@*<div style="position : center">
     <input type="text">
     <button type="submit">Search</button>
-</div>
+</div>*@
 
 <div>
     <p></p>
 </div>
-
+<div>
+    <a asp-action="ShowCreateSnack">Létrehoz</a>
+    <hr>
+</div>
 <div>
     @foreach (Snack snack in Model)
     {
-        <p>
-            @snack.Brand @snack.Name
-        @snack.PriceString()
-    </p>
+   
+        @if (@snack.Brand == "Brand")
+        {
+        <p>@snack.Name @snack.PriceString()</p>
+        }
+        else
+        {
+        <p>@snack.Brand @snack.Name
+        @snack.PriceString()</p>
+        }
+    
 }
 </div>

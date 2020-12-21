@@ -1,0 +1,36 @@
+﻿@model Snack
+
+@{
+    ViewData["Title"] = "Snack létrehozása";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Snack Létrehozás</h1>
+</div>
+<hr />
+<form asp-action="CreateSnack" method="POST">
+
+    <div class="form-group">
+        <label>Név</label>
+        <input class="form-control" type="text" asp-for="Name" value="@Model.Name">
+
+        <label>Márka</label>
+        <input class="form-control" type="text" asp-for="Brand" value="@Model.Brand">
+
+        <label>Kiszerelés</label>
+        <input class="form-control" type="text" asp-for="Weight" value="@Model.Weight">
+
+        <label>Darabszám</label>
+        <input class="form-control" type="number" asp-for="Count" value="@Model.Count">
+
+        <label>Ár</label>
+        <input class="form-control" type="number" asp-for="Price" value="@Model.Price">
+    </div>
+
+    <input class="btn-primary" type="submit" value="Tovább">
+
+    <div>
+        <br>
+        <a asp-action="Index">Vissza</a>
+    </div>
+</form>

@@ -1,0 +1,36 @@
+﻿@model Drink
+
+@{
+    ViewData["Title"] = "Ital létrehozása";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Ital Létrehozás</h1>
+</div>
+<hr />
+<form asp-action="CreateDrink" method="POST">
+
+    <div class="form-group">
+        <label>Név</label>
+        <input class="form-control" type="text" asp-for="Name" value="@Model.Name">
+
+        <label>Mennyiség l</label>
+        <input class="form-control" type="number" asp-for="Bottle" value="@Model.Bottle">
+
+        <label>Alkohol %</label>
+        <input class="form-control" type="text" asp-for="AlcoholPercentage" value="@Model.AlcoholPercentage">
+
+        <label>Ár</label>
+        <input class="form-control" type="number" asp-for="Price" value="@Model.Price">
+
+        <label>Kiegészítő</label>
+        <input class="form-control" type="text" asp-for="Comment" value="@Model.Comment">
+    </div>
+
+    <input class="btn-primary" type="submit" value="Tovább">
+
+    <div>
+        <br>
+        <a asp-action="Index">Vissza</a>
+    </div>
+</form>

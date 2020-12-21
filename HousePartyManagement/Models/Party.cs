@@ -10,7 +10,7 @@ namespace HousePartyManagement.Models
         public int Id { get; set; }
         public string Host { get; set; }
         public string Location { get; set; }
-        public DateTimeOffset Time { get; set; }
+        public DateTime Time { get; set; }
 
         public List<string> Members { get; set; }
         public int Capacity { get; set; }

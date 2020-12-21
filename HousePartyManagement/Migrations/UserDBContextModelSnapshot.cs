@@ -3,16 +3,14 @@ using System;
 using HousePartyManagement.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HousePartyManagement.Migrations
 {
     [DbContext(typeof(UserDBContext))]
-    [Migration("20201219194136_Initial-Create")]
-    partial class InitialCreate
+    partial class UserDBContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,27 +20,41 @@ namespace HousePartyManagement.Migrations
             modelBuilder.Entity("HousePartyManagement.Areas.Identity.Data.User", b =>
                 {
                     b.Property<string>("Id")
+                        .HasColumnName("idSzemely")
                         .HasColumnType("varchar(767)");
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("BirthDate")
+                        .HasColumnName("SzuletesiIdo")
+                        .HasColumnType("date");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("text");
 
                     b.Property<string>("Email")
+                        .HasColumnName("Email")
                         .HasColumnType("varchar(256)")
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<string>("Gender")
+                        .HasColumnName("Nem")
+                        .HasColumnType("varchar(20)");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("timestamp");
+
+                    b.Property<string>("Name")
+                        .HasColumnName("Nev")
+                        .HasColumnType("varchar(45)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasColumnType("varchar(256)")
@@ -53,6 +65,7 @@ namespace HousePartyManagement.Migrations
                         .HasMaxLength(256);
 
                     b.Property<string>("PasswordHash")
+                        .HasColumnName("Jelszo")
                         .HasColumnType("text");
 
                     b.Property<string>("PhoneNumber")
@@ -68,6 +81,7 @@ namespace HousePartyManagement.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("UserName")
+                        .HasColumnName("Felhasznalonev")
                         .HasColumnType("varchar(256)")
                         .HasMaxLength(256);
 
@@ -80,7 +94,7 @@ namespace HousePartyManagement.Migrations
                         .IsUnique()
                         .HasName("UserNameIndex");
 
-                    b.ToTable("User");
+                    b.ToTable("szemely");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
