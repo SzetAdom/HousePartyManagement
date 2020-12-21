@@ -380,14 +380,14 @@ namespace HousePartyManagement.Data
         //    }
         //}
 
-        public void AddUserToParty(int partyId, int userId)
+        public void AddUserToParty(int partyId, string userId)
         {
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand("create_szemely_buli", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@id_buli_in", partyId);
+                cmd.Parameters.AddWithValue("@id_buli_in", 1);
                 cmd.Parameters.AddWithValue("@id_szemely_in", userId);
                 cmd.ExecuteNonQuery();
             }
@@ -540,6 +540,25 @@ namespace HousePartyManagement.Data
             }
             else return false;
             
+        }
+
+        public string GetUserByUserName(string UserName)
+        {
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand($"SELECT idSzemely FROM szemely WHERE Felhasznalonev = \"{UserName}\"", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        return reader.ToString();
+                    }
+                }
+
+            }
+            return null;
         }
     }
 

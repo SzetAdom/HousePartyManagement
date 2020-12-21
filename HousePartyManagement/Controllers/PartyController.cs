@@ -39,6 +39,18 @@ namespace HousePartyManagement.Controllers
             return RedirectToAction("Index");
         }
 
+        //[HttpPost]
+        //public IActionResult Join(Party model)
+        //{
+        //    context = HttpContext.RequestServices.GetService(typeof(HousePartyContext)) as HousePartyContext;
+
+        //    context.AddUserToParty(model.Id, context.GetUserByUserName(User.Identity.Name));
+
+
+        //    return RedirectToAction("Index");
+        //}
+
+
         [HttpPost]
         public IActionResult Edit(Party model)
         {
@@ -59,11 +71,12 @@ namespace HousePartyManagement.Controllers
             if (id.HasValue)
             {
                 Party model = context.GetPartyById(id.Value);
-                if (model != null)
-                {
-                    return View("Edit", model);
-                }
-                else return RedirectToAction("Index");
+                if (model != null && model.Host == User.Identity.Name)
+                    {
+                        return View("Edit", model);
+                    }
+                    else return RedirectToAction("Index");
+
             }
             else return RedirectToAction("Index");
         }

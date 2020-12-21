@@ -34,9 +34,12 @@
         </table>
 
         <p>Kapacitás: @party.Members.Count / @party.Capacity</p>
-        
+
         <a asp-action="More" asp-route-id="@party.Id">Bővebben</a>
-        <a asp-action="ShowEdit" asp-route-id="@party.Id">Szerkeszt</a>
+        @if (party.Host == User.Identity.Name)
+        {
+            <a asp-action="ShowEdit" asp-route-id="@party.Id">Szerkeszt</a>
+        }
 
         <hr>
     }
