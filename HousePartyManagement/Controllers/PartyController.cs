@@ -85,7 +85,7 @@ namespace HousePartyManagement.Controllers
         public ActionResult Create(Party model)
         {
             context = HttpContext.RequestServices.GetService(typeof(HousePartyContext)) as HousePartyContext;
-
+            model.Host = User.Identity.Name;
             context.CreateParty(model);
 
             return RedirectToAction("Index");

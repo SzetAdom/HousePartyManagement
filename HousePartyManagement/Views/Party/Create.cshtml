@@ -11,14 +11,12 @@
 <form asp-action="Create" method="POST">
 
     <div class="form-group">
-        <label>Szervező</label>
-        <input class="form-control" type="text" asp-for="Host" value="@Model.Host">
 
         <label>Helyszin</label>
         <input class="form-control" type="text" asp-for="Location" value="@Model.Location">
 
         <label>Időpont</label><br>
-        <input class="form-control" type="datetime" asp-for="Time" value="@Model.Time">
+        <input class="form-control" type="datetime-local" asp-for="Time" value="@Model.Time">
         <br>
 
         <label>Kapacitás</label>

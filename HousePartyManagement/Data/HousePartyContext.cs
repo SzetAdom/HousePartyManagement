@@ -120,7 +120,7 @@ namespace HousePartyManagement.Data
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT * FROM buli", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM buli ORDER BY kezdes DESC", conn);
 
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -553,7 +553,7 @@ namespace HousePartyManagement.Data
                 {
                     while (reader.Read())
                     {
-                        return reader.ToString();
+                        return reader["Felhasznalonev"].ToString();
                     }
                 }
 
