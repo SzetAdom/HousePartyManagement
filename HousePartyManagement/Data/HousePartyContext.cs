@@ -126,13 +126,14 @@ namespace HousePartyManagement.Data
                 {
                     while (reader.Read())
                     {
+                        int partyId = Convert.ToInt32(reader["idBuli"]);
                         partys.Add(new Party()
                         {
-                            Id = Convert.ToInt32(reader["idBuli"]),
+                            Id = partyId,
                             Host = reader["Szervezo"].ToString(),
                             Location = reader["Helyszin"].ToString(),
                             Time = DateTime.Parse(reader["Kezdes"].ToString()),
-                            Members = new List<string>() { "Én", "Gyula", "Ottó" },
+                            Members = GetMembersOfParty(partyId),
                             Capacity = Convert.ToInt32(reader["Kapacitas"]),
                             Snacks = GetSnackByParty(Convert.ToInt32(reader["idBuli"])),
                             ConsumedSnacks = new Dictionary<int, int>(),
@@ -146,6 +147,28 @@ namespace HousePartyManagement.Data
             }
 
             return partys;
+        }
+
+        public List<string> GetMembersOfParty(int partyId)
+        {
+            List<string> members = new List<string>();
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand($"SELECT Felhasznalonev FROM szemely, szemely_buli WHERE idBuli = \"{partyId}\" AND szemely.idSzemely = szemely_buli.idSzemely", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        members.Add(reader["Felhasznalonev"].ToString());
+                    }
+                }
+
+            }
+
+            return members;
         }
 
         public Party GetPartyById(int partyId)
@@ -393,6 +416,7 @@ namespace HousePartyManagement.Data
             }
         }
 
+
         public List<User> GetUserFromParty(int partyId) //lehet hiba
         {
             List<User> members = new List<User>();
@@ -420,6 +444,7 @@ namespace HousePartyManagement.Data
 
             return members;
         }
+
 
         public List<Drink> GetDrinkByParty(int partyId)
         {
