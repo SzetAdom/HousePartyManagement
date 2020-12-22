@@ -39,16 +39,16 @@ namespace HousePartyManagement.Controllers
             return RedirectToAction("Index");
         }
 
-        //[HttpPost]
-        //public IActionResult Join(Party model)
-        //{
-        //    context = HttpContext.RequestServices.GetService(typeof(HousePartyContext)) as HousePartyContext;
+        [HttpPost]
+        public IActionResult Join(Party model)
+        {
+            context = HttpContext.RequestServices.GetService(typeof(HousePartyContext)) as HousePartyContext;
 
-        //    context.AddUserToParty(model.Id, context.GetUserByUserName(User.Identity.Name));
+            context.AddUserToParty(model.Id, context.GetUserByUserName(User.Identity.Name));
 
 
-        //    return RedirectToAction("Index");
-        //}
+            return RedirectToAction("Index");
+        }
 
 
         [HttpPost]

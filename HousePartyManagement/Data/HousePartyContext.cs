@@ -187,7 +187,7 @@ namespace HousePartyManagement.Data
                         Host = reader["Szervezo"].ToString(),
                         Location = reader["Helyszin"].ToString(),
                         Time = DateTime.Parse(reader["Kezdes"].ToString()),
-                        Members = new List<string>() { "Én", "Gyula", "Ottó" },
+                        Members = GetMembersOfParty(partyId),
                         Capacity = Convert.ToInt32(reader["Kapacitas"]),
                         Snacks = GetSnackByParty(Convert.ToInt32(reader["idBuli"])),
                         ConsumedSnacks = new Dictionary<int, int>(),
@@ -410,7 +410,7 @@ namespace HousePartyManagement.Data
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand("create_szemely_buli", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@id_buli_in", 1);
+                cmd.Parameters.AddWithValue("@id_buli_in", partyId);
                 cmd.Parameters.AddWithValue("@id_szemely_in", userId);
                 cmd.ExecuteNonQuery();
             }
@@ -578,7 +578,7 @@ namespace HousePartyManagement.Data
                 {
                     while (reader.Read())
                     {
-                        return reader["Felhasznalonev"].ToString();
+                        return reader["idSzemely"].ToString();
                     }
                 }
 
